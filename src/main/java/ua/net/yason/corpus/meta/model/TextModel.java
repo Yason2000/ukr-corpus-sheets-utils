@@ -23,6 +23,16 @@ public class TextModel {
 
     private List<String> translators;
 
+    private String publicationCity;
+    
+    private String publisher;
+    
+    private String publicationYear;
+    
+    private String publication;
+    
+    private String uri;
+    
     /**
      * @return the path
      */
@@ -121,14 +131,59 @@ public class TextModel {
         this.translators = translators;
     }
 
+    public String getPublication() {
+        return publication;
+    }
+
+    public void setPublication(String publication) {
+        this.publication = publication;
+    }
+
+    public String getPublicationCity() {
+        return publicationCity;
+    }
+
+    public void setPublicationCity(String publicationCity) {
+        this.publicationCity = publicationCity;
+    }
+
+    public String getPublicationYear() {
+        return publicationYear;
+    }
+
+    public void setPublicationYear(String publicationYear) {
+        this.publicationYear = publicationYear;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public String getUri() {
+        return uri;
+    }
+
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
+
     @Override
     public String toString() {
-        return "TextModel{" + "path=" + path + 
-                ", authors=" + authors + 
-                ", name=" + name + 
-                ", genre=" + genre + 
-                ", language=" + language + 
-                ", date=" + date + 
-                ", translators=" + translators + '}';
+        return "TextModel{" + "path=" + path 
+                + ", authors=" + authors 
+                + ", name=" + name 
+                + ", genre=" + genre 
+                + ", language=" + language 
+                + ", date=" + date 
+                + ", translators=" + translators 
+                + ", publicationCity=" + publicationCity
+                + ", publisher=" + publisher 
+                + ", publicationYear=" + publicationYear
+                + ", publication=" + publication
+                + ", uri=" + uri + '}';
     }
 }

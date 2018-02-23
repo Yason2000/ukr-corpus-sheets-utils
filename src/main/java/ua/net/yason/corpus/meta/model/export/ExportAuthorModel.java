@@ -80,4 +80,9 @@ public class ExportAuthorModel implements Serializable {
     public void setRegions(List<ExportCodeNameModel> regions) {
         this.regions = regions;
     }
+
+    @Override
+    public String toString() {
+        return "ExportAuthorModel{" + "names=" + names + ", birthday=" + birthday + ", immigrationDate=" + immigrationDate + ", regions=" + regions + '}';
+    }
 }

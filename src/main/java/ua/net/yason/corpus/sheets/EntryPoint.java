@@ -6,6 +6,7 @@ import com.google.api.services.sheets.v4.Sheets;
 
 import java.io.IOException;
 import ua.net.yason.corpus.meta.BasicStatistics;
+import ua.net.yason.corpus.meta.SimpleStatistics;
 import ua.net.yason.corpus.meta.model.export.ExportCorpusModel;
 import ua.net.yason.corpus.meta.model.export.factory.ExportCorpusFactory;
 import ua.net.yason.corpus.utils.XmlUtils;
@@ -26,5 +27,7 @@ public class EntryPoint {
         ExportCorpusFactory exportFactory = new ExportCorpusFactory();
         ExportCorpusModel exportModel = exportFactory.create(corpusMeta);
         XmlUtils.saveAsXml("ukrCorpusMeta.xml", ExportCorpusModel.class, exportModel);
+        SimpleStatistics simpleStatistics = new SimpleStatistics(corpusMeta, exportModel);
+        simpleStatistics.printSummary(System.out);
     }
 }

@@ -7,7 +7,6 @@ import ua.net.yason.corpus.meta.model.TextModel;
 import ua.net.yason.corpus.meta.model.export.ExportAuthorModel;
 import ua.net.yason.corpus.meta.model.export.ExportTextModel;
 
-import static ua.net.yason.corpus.meta.model.export.factory.ExportCorpusFactory.fillCodeNames;
 import static ua.net.yason.corpus.meta.model.export.factory.ExportCorpusFactory.fillCodeName;
 
 /**
@@ -44,5 +43,11 @@ class ExportTextFactory {
         dest.setPath(src.getPath());
         dest.setName(src.getName());
         dest.setDate(src.getDate());
+        
+        dest.setPublicationCity(src.getPublicationCity());
+        dest.setPublisher(src.getPublisher());
+        dest.setPublicationYear(src.getPublicationYear());
+        dest.setPublication(src.getPublication());
+        dest.setUri(src.getUri());
     }
 }

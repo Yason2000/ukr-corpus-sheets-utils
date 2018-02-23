@@ -16,7 +16,7 @@ import static ua.net.yason.corpus.sheets.GoogleSheetsApi.getStringValue;
  */
 public class TextModelFactory {
 
-    private String textsRange = "Texts!A2:M6500";
+    private String textsRange = "Texts!A2:R8500";
 
     private final int TEXT_PATH_COLUMN = 0;
     
@@ -33,6 +33,12 @@ public class TextModelFactory {
     private final int TEXT_TRANSLATOR1_COLUMN = 10;
     private final int TEXT_TRANSLATOR2_COLUMN = 11;
     private final int TEXT_TRANSLATOR3_COLUMN = 12;
+    
+    private final int TEXT_PUB_CITY = 13;
+    private final int TEXT_PUBLISHER = 14;
+    private final int TEXT_PUB_YEAR = 15;
+    private final int TEXT_PUBLICATION = 16;
+    private final int TEXT_URI = 17;
 
     private List<TextModel> getTexts(ValueRange valueRange){
         List<List<Object>> values = valueRange.getValues();
@@ -53,6 +59,13 @@ public class TextModelFactory {
             text.setTranslators(GoogleSheetsApi.getList(value, 
                     TEXT_TRANSLATOR1_COLUMN, TEXT_TRANSLATOR2_COLUMN,
                     TEXT_TRANSLATOR3_COLUMN));
+            
+            text.setPublicationCity(getStringValue(value, TEXT_PUB_CITY));
+            text.setPublisher(getStringValue(value, TEXT_PUBLISHER));
+            text.setPublicationYear(getStringValue(value, TEXT_PUB_YEAR));
+            text.setPublication(getStringValue(value, TEXT_PUBLICATION));
+            text.setUri(getStringValue(value, TEXT_URI));
+    
             result.add(text);
         }
         return result;

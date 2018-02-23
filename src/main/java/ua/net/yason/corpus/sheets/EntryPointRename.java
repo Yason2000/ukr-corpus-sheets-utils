@@ -16,7 +16,7 @@ import ua.net.yason.corpus.meta.model.TextModel;
  */
 public class EntryPointRename {
 
-    private static String srcRootPath = "d:\\GoogleDrive\\Шведова\\Ukr-corp";
+    public static String srcRootPath = "d:\\GoogleDrive\\Шведова\\Ukr-corp\\Texts";
     //private static String srcRootPath = "d:\\Shvedova\\Texts";
     
     //private static String destRootPath = "d:\\GoogleDrive\\Шведова\\Ukr-corp\\.NewNames";

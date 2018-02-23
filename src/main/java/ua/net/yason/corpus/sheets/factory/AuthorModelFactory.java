@@ -16,7 +16,7 @@ import static ua.net.yason.corpus.sheets.GoogleSheetsApi.getStringValue;
  */
 public class AuthorModelFactory {
 
-    private String authorsRange = "Authors!A2:J2700";
+    private String authorsRange = "Authors!A2:J4000";
 
     private final int AUTHOR_NAME1_COLUMN = 0;
     private final int AUTHOR_BIRTHDAY_COLUMN = 1;
