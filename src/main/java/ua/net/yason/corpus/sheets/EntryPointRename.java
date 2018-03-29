@@ -8,6 +8,7 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import ua.net.yason.corpus.meta.model.TextModel;
 
 /**
@@ -23,6 +24,7 @@ public class EntryPointRename {
     private static String destRootPath = "d:\\Shvedova\\Texts\\.new-names";
     
     public static void main(String[] args) throws IOException {
+        
         String sheetId = "1cAHbrF6-aQrZiz0K8N0wEzRV_FJxO2fBXa8mAD0luW8";
         Sheets service = GoogleSheetsApi.getSheetsService();
         CorpusModelFactory loader = new CorpusModelFactory();
@@ -30,6 +32,7 @@ public class EntryPointRename {
 
         String id = "Any-Latin; nfd; [:nonspacing mark:] remove; nfc";
         Transliterator normalizer = Transliterator.getInstance(id);
+        Charset charset = Charset.forName("UTF-8");
         
         for (TextModel text : corpusMeta.getTexts()) {
             String originPath = text.getPath();
@@ -38,6 +41,8 @@ public class EntryPointRename {
             encodedPath = encodedPath.trim().replaceAll("[–\\.\\s\\-…]", "_");
             encodedPath = encodedPath.trim().replaceAll("_+", "_");
             encodedPath = encodedPath.replaceAll("[\\[\\]’“«»\\?„”'\\,\\ʹʺ!\\(\\)]", "");
+            encodedPath = encodedPath.replaceAll("[^\\p{ASCII}]", "");
+            encodedPath = charset.decode(charset.encode(encodedPath)).toString();
             encodedPath += ".txt";
             System.out.println(encodedPath);
             File srcFile = new File(srcRootPath + "\\" + originPath);

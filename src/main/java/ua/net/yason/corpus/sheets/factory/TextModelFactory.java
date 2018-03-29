@@ -16,7 +16,7 @@ import static ua.net.yason.corpus.sheets.GoogleSheetsApi.getStringValue;
  */
 public class TextModelFactory {
 
-    private String textsRange = "Texts!A2:R8500";
+    private String textsRange = "Texts!A2:R25000";
 
     private final int TEXT_PATH_COLUMN = 0;
     
