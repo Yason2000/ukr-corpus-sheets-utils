@@ -3,8 +3,8 @@ package ua.net.yason.corpus.meta.model.export.factory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import ua.net.yason.corpus.meta.model.CorpusModel;
-import ua.net.yason.corpus.meta.model.TextModel;
 import ua.net.yason.corpus.meta.model.export.ExportCodeNameModel;
 import ua.net.yason.corpus.meta.model.export.ExportCorpusModel;
 import ua.net.yason.corpus.meta.model.export.ExportTextModel;
@@ -17,12 +17,11 @@ public class ExportCorpusFactory {
 
     private final ExportTextFactory exportTextFactory = new ExportTextFactory();
 
-    public ExportCorpusModel create(CorpusModel model) {
+    public ExportCorpusModel create(final CorpusModel model) {
         ExportCorpusModel result = new ExportCorpusModel();
-        List<ExportTextModel> texts = new ArrayList<>(model.getTexts().size());
-        for (TextModel textModel : model.getTexts()) {
-            texts.add(exportTextFactory.create(model, textModel));
-        }
+        List<ExportTextModel> texts = model.getTexts().stream()
+                .map(text -> {return exportTextFactory.create(model, text);})
+                .collect(Collectors.toList());
         result.setTexts(texts);
         return result;
     }

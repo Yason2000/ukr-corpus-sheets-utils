@@ -17,11 +17,7 @@ import ua.net.yason.corpus.meta.model.TextModel;
  */
 public class EntryPointRename {
 
-    public static String srcRootPath = "d:\\GoogleDrive\\Шведова\\Ukr-corp\\Texts";
-    //private static String srcRootPath = "d:\\Shvedova\\Texts";
-    
-    //private static String destRootPath = "d:\\GoogleDrive\\Шведова\\Ukr-corp\\.NewNames";
-    private static String destRootPath = "d:\\Shvedova\\Texts\\.new-names";
+    private static String destRootPath = "d:\\Shvedova\\RenamedTexts";
     
     public static void main(String[] args) throws IOException {
         
@@ -45,7 +41,7 @@ public class EntryPointRename {
             encodedPath = charset.decode(charset.encode(encodedPath)).toString();
             encodedPath += ".txt";
             System.out.println(encodedPath);
-            File srcFile = new File(srcRootPath + "\\" + originPath);
+            File srcFile = new File(Options.UKR_CORPUS_TEXTS_ROOT_PATH + "\\" + originPath);
             File destFile = new File(destRootPath + "\\" + encodedPath);
             destFile.getParentFile().mkdirs();
             FileUtils.copyFile(srcFile, destFile);

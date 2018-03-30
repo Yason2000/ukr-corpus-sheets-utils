@@ -18,7 +18,7 @@ import ua.net.yason.corpus.utils.XmlUtils;
 public class EntryPoint {
 
     public static void main(String[] args) throws IOException {
-        String sheetId = "1cAHbrF6-aQrZiz0K8N0wEzRV_FJxO2fBXa8mAD0luW8";
+        String sheetId = Options.UKR_CORPUS_METADATA_SHEETS_ID;
         Sheets service = GoogleSheetsApi.getSheetsService();
         CorpusModelFactory loader = new CorpusModelFactory();
         CorpusModel corpusMeta = loader.create(service, sheetId);
@@ -26,8 +26,8 @@ public class EntryPoint {
         basicStatistics.printSummary(System.out);
         ExportCorpusFactory exportFactory = new ExportCorpusFactory();
         ExportCorpusModel exportModel = exportFactory.create(corpusMeta);
-        XmlUtils.saveAsXml("ukrCorpusMeta.xml", ExportCorpusModel.class, exportModel);
-        SimpleStatistics simpleStatistics = new SimpleStatistics(corpusMeta, exportModel);
+        XmlUtils.saveAsXml(Options.UKR_CORPUS_METADATA_OUTPUT_XML_FILENAME, ExportCorpusModel.class, exportModel);
+        SimpleStatistics simpleStatistics = new SimpleStatistics(corpusMeta, exportModel, Options.UKR_CORPUS_TEXTS_ROOT_PATH);
         simpleStatistics.printSummary(System.out);
     }
 }

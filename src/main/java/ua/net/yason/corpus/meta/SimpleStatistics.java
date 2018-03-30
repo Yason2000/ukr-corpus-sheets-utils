@@ -11,7 +11,6 @@ import ua.net.yason.corpus.meta.model.export.ExportAuthorModel;
 import ua.net.yason.corpus.meta.model.export.ExportCodeNameModel;
 import ua.net.yason.corpus.meta.model.export.ExportCorpusModel;
 import ua.net.yason.corpus.meta.model.export.ExportTextModel;
-import ua.net.yason.corpus.sheets.EntryPointRename;
 
 /**
  *
@@ -26,6 +25,8 @@ public class SimpleStatistics {
     private long totalBytes;
 
     private final Map<String, RegionStatistics> regionsStat = new HashMap<>();
+    
+    private final String corpusTextsPath;
 
     class RegionStatistics {
 
@@ -56,9 +57,10 @@ public class SimpleStatistics {
         }
     }
 
-    public SimpleStatistics(CorpusModel corpusMeta, ExportCorpusModel corpus) {
+    public SimpleStatistics(CorpusModel corpusMeta, ExportCorpusModel corpus, String corpusTextsPath) {
         this.corpus = corpus;
         this.corpusMeta = corpusMeta;
+        this.corpusTextsPath = corpusTextsPath;
     }
 
     private void init() {
@@ -101,7 +103,7 @@ public class SimpleStatistics {
     }
     
     public long textSize(String path) {
-        String fileName = EntryPointRename.srcRootPath + "\\"+ path;
+        String fileName = corpusTextsPath + "\\"+ path;
         File file = new File(fileName);
         if (file.exists()){
                     return file.length();
