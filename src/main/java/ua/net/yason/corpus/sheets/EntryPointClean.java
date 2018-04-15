@@ -20,12 +20,14 @@ import java.util.stream.Collectors;
 public class EntryPointClean {
 
     public static String srcRootPath = "d:\\Shvedova\\Texts";
-    public static String cleanTextPath = "d:\\Shvedova\\Scripts\\.foreign\\nlp_uk\\src\\main\\groovy\\org\\nlp_uk\\other\\CleanText.groovy";
+    public static String cleanTextPath = "c:\\Libraries\\brown-uk\\nlp_uk\\src\\main\\groovy\\org\\nlp_uk\\other\\CleanText.groovy";
 
     public static void main(String[] args) throws IOException {
         Files.list(Paths.get(srcRootPath))
                 .parallel()
                 .filter(Files::isDirectory)
+                //.forEach(EntryPointClean::cleanDirectory);        {1}
+                //.forEach(EntryPointClean::moveGood);              {2}
                 .forEach(EntryPointClean::removeGood);
     }
 

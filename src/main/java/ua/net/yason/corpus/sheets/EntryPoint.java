@@ -27,7 +27,7 @@ public class EntryPoint {
         ExportCorpusFactory exportFactory = new ExportCorpusFactory();
         ExportCorpusModel exportModel = exportFactory.create(corpusMeta);
         XmlUtils.saveAsXml(Options.UKR_CORPUS_METADATA_OUTPUT_XML_FILENAME, ExportCorpusModel.class, exportModel);
-        SimpleStatistics simpleStatistics = new SimpleStatistics(corpusMeta, exportModel, Options.UKR_CORPUS_TEXTS_ROOT_PATH);
-        simpleStatistics.printSummary(System.out);
+        //SimpleStatistics simpleStatistics = new SimpleStatistics(corpusMeta, exportModel, Options.UKR_CORPUS_TEXTS_ROOT_PATH);
+        //simpleStatistics.printSummary(System.out);
     }
 }

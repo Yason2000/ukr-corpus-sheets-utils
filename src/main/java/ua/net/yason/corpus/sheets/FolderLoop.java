@@ -46,7 +46,7 @@ public class FolderLoop {
         tagFiles(textFiles);        
     }
     
-    private static String getDestFileName(File textFile)
+    public static String getDestFileName(File textFile)
     {
         String fileName = textFile.getName();
         String folderName = TOKENS_PATH + textFile.getParentFile().getName();
@@ -126,7 +126,7 @@ public class FolderLoop {
 
     private static final AtomicInteger count = new AtomicInteger();
     
-    private static void tagFile(String sourceFileName, String destFileName, int size) {
+    public static void tagFile(String sourceFileName, String destFileName, int size) {
         String[] cmd = {"cmd", "/c", "groovy", TAG_SCRIPT, "-x", "-i", sourceFileName, "-o", destFileName};
         try {
             System.out.println("PROCESS(" + count.incrementAndGet() + "/" + size + "):" + sourceFileName + " TO " + destFileName);
