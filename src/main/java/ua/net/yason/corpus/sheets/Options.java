@@ -10,6 +10,6 @@ public class Options {
     
     public final static String UKR_CORPUS_METADATA_OUTPUT_XML_FILENAME = "ukrCorpusMeta.xml";
     
-    public final static String UKR_CORPUS_TEXTS_ROOT_PATH = "d:\\GoogleDrive\\Шведова\\Ukr-corp\\Texts";
+    public final static String UKR_CORPUS_TEXTS_ROOT_PATH = "C:\\Shvedova\\Texts";
     
 }

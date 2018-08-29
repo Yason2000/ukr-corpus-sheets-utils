@@ -17,9 +17,9 @@ import ua.net.yason.corpus.meta.model.TextModel;
  */
 public class EntryPointRename {
 
-    private static final String SRC_TEXTS_PATH = "d:\\Shvedova\\Texts";
+    private static final String SRC_TEXTS_PATH = "C:\\Shvedova\\Texts";
     
-    private static String DST_TEXTS_PATH = "d:\\Shvedova\\RenamedTexts";
+    private static String DST_TEXTS_PATH = "C:\\Shvedova\\RenamedTexts";
     
     public static void main(String[] args) throws IOException {
         
@@ -42,8 +42,8 @@ public class EntryPointRename {
             encodedPath = encodedPath.replaceAll("[^\\p{ASCII}]", "");
             encodedPath = charset.decode(charset.encode(encodedPath)).toString();
             encodedPath += ".txt";
-            String firstChar = encodedPath.substring(0, 1).toUpperCase();
-            encodedPath = firstChar + "\\" + encodedPath;
+            //String firstChar = encodedPath.substring(0, 1).toUpperCase();
+            //encodedPath = firstChar + "\\" + encodedPath;
             System.out.println(encodedPath);
             File srcFile = new File(SRC_TEXTS_PATH + "\\" + originPath);
             File destFile = new File(DST_TEXTS_PATH + "\\" + encodedPath);

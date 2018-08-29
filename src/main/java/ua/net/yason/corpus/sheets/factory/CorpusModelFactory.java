@@ -14,11 +14,11 @@ import static ua.net.yason.corpus.sheets.GoogleSheetsApi.getRange;
  */
 public class CorpusModelFactory {
     
-    private String genresRange = "Genres!B1:C50";
+    private String genresRange = "Genres!B1:C250";
 
-    private String regionsRange = "Regions!B1:C100";
+    private String regionsRange = "Regions!B1:C250";
 
-    private String languagesRange = "Languages!B1:C100";
+    private String languagesRange = "Languages!B1:C250";
     
     private final AuthorModelFactory authorModelFactory = new AuthorModelFactory();
     

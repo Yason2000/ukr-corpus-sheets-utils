@@ -19,16 +19,26 @@ import java.util.stream.Collectors;
  */
 public class EntryPointClean {
 
-    public static String srcRootPath = "d:\\Shvedova\\Texts";
+    public static String srcRootPath = "c:\\Shvedova\\Texts";
     public static String cleanTextPath = "c:\\Libraries\\brown-uk\\nlp_uk\\src\\main\\groovy\\org\\nlp_uk\\other\\CleanText.groovy";
 
     public static void main(String[] args) throws IOException {
         Files.list(Paths.get(srcRootPath))
                 .parallel()
                 .filter(Files::isDirectory)
-                //.forEach(EntryPointClean::cleanDirectory);        {1}
-                //.forEach(EntryPointClean::moveGood);              {2}
-                .forEach(EntryPointClean::removeGood);
+                .forEach(path -> {
+                    try {
+                        Files.list(path)
+                                .parallel()
+                                .filter(Files::isDirectory)
+                                //.forEach(EntryPointClean::cleanDirectory);        //{1}
+                                //.forEach(EntryPointClean::moveGood);              //{2}
+                                .forEach(EntryPointClean::removeGood);
+                                //.forEach(System.out::println);
+                    } catch (IOException ex) {
+                        Logger.getLogger(EntryPointClean.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                });
     }
 
     public static void removeGood(Path path) {

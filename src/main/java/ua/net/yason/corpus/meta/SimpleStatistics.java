@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 import ua.net.yason.corpus.meta.model.CorpusModel;
 import ua.net.yason.corpus.meta.model.export.ExportAuthorModel;
 import ua.net.yason.corpus.meta.model.export.ExportCodeNameModel;
@@ -72,14 +73,14 @@ public class SimpleStatistics {
     public PrintStream printSummary(PrintStream cout) {
         init();
 
-
+        final AtomicLong line = new AtomicLong(1);
         corpus.getTexts().forEach((ExportTextModel text) -> {
             List<ExportAuthorModel> authors = text.getAuthors();
             List<ExportAuthorModel> translators = text.getTranslators();
             if (translators != null && !translators.isEmpty()) {
                 authors = translators;
             }
-            long textSize = textSize(text.getPath());
+            long textSize = textSize(line.incrementAndGet(), text.getPath());
             totalBytes += textSize;
             authors.forEach((ExportAuthorModel author) -> {
                 List<ExportCodeNameModel> regions = author.getRegions();
@@ -87,7 +88,11 @@ public class SimpleStatistics {
                     //regions.forEach((region) -> {
                         String code = regions.get(0).getCode();
                         RegionStatistics stat = regionsStat.get(code);
-                        stat.addText(textSize);
+                        if (stat == null) {
+                            System.out.println("ERROR region '" + code + "' autor '" + author + "'" );
+                        } else {
+                            stat.addText(textSize);
+                        }
                     //});
                 }
             });
@@ -102,14 +107,14 @@ public class SimpleStatistics {
         return cout;
     }
     
-    public long textSize(String path) {
+    public long textSize(long line, String path) {
         String fileName = corpusTextsPath + "\\"+ path;
         File file = new File(fileName);
         if (file.exists()){
                     return file.length();
         }
         else{
-                    System.out.println("ERROR " + fileName);
+                    System.out.println("ERROR #" + line + " file " + fileName);
         }
         return 0;
     }
